@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0" ,user-scalable="yes">
+    <title>MyToDo</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>ToDos</h1>
+        </div>
+        <div id="taskInput">
+            <label for="taskName">Enter Task Name:  &nbsp;&nbsp;</label>
+            <input type="text" id="taskName" name="name" maxlength="500"/>
+            <button name="submit" id="submitTask">Submit</button><br>
+        </div>
+        <div id="taskTable">
+            <table border="1px" id="table">
+                <tr>
+                    <th>Completion Status</th>
+                    <th>Task Name</th>
+                </tr>
+            </table>
+        </div>    
+    </div>
+        <script src="/assets/javascript/app.js" > </script>
+</body>
+</html>

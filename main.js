@@ -1,4 +1,5 @@
 require("dotenv").config();
+const path = require("path");
 const mysql = require("mysql2");
 const express = require("express");
 var bodyParser = require("body-parser");
@@ -12,7 +13,10 @@ const connection = mysql.createConnection({
 
 const app = express();
 app.use(express.json());
-
+app.use("/assets", express.static("public")); //to server static files
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/html/i.html"));
+});
 //Fetching values from table
 app.get("/todos", (req, res) => {
   let query = "select * from mytodo.task";
