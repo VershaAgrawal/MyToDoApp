@@ -28,10 +28,18 @@ function displayTasks() {
     url: "/todos",
     type: "GET",
     success: function (data) {
-      let tablehtml = "<tr> <th>Completion Status</th> <th>Task Name</th></tr>";
+      let tablehtml =
+        '<thead class="table-dark"><tr> <th></th> <th>Task Name</th><th></th>></tr></thead>';
       for (let i = 0; i < data.todos.length; i++) {
         let checkedstatus = "";
-        if (data.todos[i].completed == 1) checkedstatus = " checked='checked' ";
+        if (data.todos[i].completed == 1) {
+          checkedstatus = " checked='checked' ";
+          strikeOpen = "<strike>";
+          strikeClose = "</strike>";
+        } else {
+          strikeOpen = "";
+          strikeClose = "";
+        }
         tablehtml +=
           '<tr><td> <input type="checkbox" id="status"' +
           checkedstatus +
@@ -40,8 +48,10 @@ function displayTasks() {
           "," +
           data.todos[i].completed +
           ')"></td><td>' +
+          strikeOpen +
           data.todos[i].task +
-          '</td><td><input type="button" value="DELETE" onclick="deleteTask(' +
+          strikeClose +
+          '</td><td ><input type="image" value="DELETE" class="deleteButton" src="/assets/images/deleteTask.jpg" onclick="deleteTask(' +
           data.todos[i].taskid +
           ')"></td></tr>';
       }
