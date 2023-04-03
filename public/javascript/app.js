@@ -29,7 +29,7 @@ function displayTasks() {
     type: "GET",
     success: function (data) {
       let tablehtml =
-        '<thead class="table-dark"><tr> <th></th> <th>Task Name</th><th></th>></tr></thead>';
+        '<div class="row text-bg-danger border rounded-2 p-2 fw-bold fs-5"> <div class="col"></div> <div class="col">Task Name</div><div class="col text-end">Delete</div></div>';
       for (let i = 0; i < data.todos.length; i++) {
         let checkedstatus = "";
         if (data.todos[i].completed == 1) {
@@ -41,19 +41,19 @@ function displayTasks() {
           strikeClose = "";
         }
         tablehtml +=
-          '<tr><td> <input type="checkbox" id="status"' +
+          '<div class="row border-bottom border-success border-3 fw-medium" ><div class="col-1 "> <input type="checkbox" id="status"' +
           checkedstatus +
           ' onclick="myClick(' +
           data.todos[i].taskid +
           "," +
           data.todos[i].completed +
-          ')"></td><td>' +
+          ')"></div><div class="col text-start">' +
           strikeOpen +
           data.todos[i].task +
           strikeClose +
-          '</td><td ><input type="image" value="DELETE" class="deleteButton" src="/assets/images/deleteTask.jpg" onclick="deleteTask(' +
+          '</div><div class="col-2 text-end"><input type="image" value="DELETE" class="deleteButton" src="/assets/images/deleteTask.jpg" onclick="deleteTask(' +
           data.todos[i].taskid +
-          ')"></td></tr>';
+          ')"></div></div></div>';
       }
       $("#table").html(tablehtml);
     },
