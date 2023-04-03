@@ -2,3 +2,12 @@
 .table  tr td:nth-child(2){
     align-items:end;
 }
+
+#heading{
+    border-radius: 5px;
+}
+
+.font{
+    font-family: "Times New Roman", Times, serif;
+}
+
